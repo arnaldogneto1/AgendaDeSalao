@@ -1,0 +1,110 @@
+
+
+
+
+
+<div>
+  <button type="button" ng-hide="showAddEditUser" ng-click="show()">
+  Novo Funcionario
+
+  </button>
+
+<form  name="theForm" novalidate  ng-submit="saveFile(fileupload)" ng-hide="!showAddEditUser">
+
+
+
+
+
+        <div  ng-class="{'has-error': theForm.funcionario$touched && (theForm.funcionario.$error.required || theForm.funcionario.$error.null) , 'has-success':theForm.funcionario.$valid}">
+            <label>NOME FUNCIONÁRIO</label>
+               <input type="text" placeholder="Nome" ng-model="fileupload.funcionario" required  name="funcionario">
+         <span ng-show="theForm.funcionario.$touched && theForm.funcionario.$error.required" class="label label-danger">Esse campo não pode ser null!</span>
+
+
+        </div>
+
+
+        <div>
+            <label>EMAIL</label>
+               <input type="email" placeholder="Email" ng-model="fileupload.email" >
+        </div>
+
+
+        <div>
+          <label>FONE</label>
+               <input type="text" placeholder="Fone" ng-model="fileupload.fone" >
+        </div>
+
+        <div>
+            <label>CPF</label>
+               <input type="text" placeholder="CPF" ng-model="fileupload.cpf" >
+        </div>
+
+        <div>
+            <label>RG</label>
+               <input type="text" placeholder="RG" ng-model="fileupload.rg" >
+        </div>
+
+        <div>
+            <label>EMPRESA</label>
+               <input type="text" placeholder="Empresa" ng-model="fileupload.empresa" >
+        </div>
+
+        <div>
+             <label>Função</label>
+
+               <input type="text" placeholder="Função" ng-model="fileupload.funcao" >
+        </div>
+
+
+
+
+
+
+
+
+       <button   type="submit" class="btn btn-success btn-s" >
+              <span class="glyphicon glyphicon-upload"></span> Salvar </button>
+                    <button type="reset"  class="btn btn-danger btn-s">
+                 <span class="glyphicon glyphicon-trash"></span>Limpar Nome</button>
+           <button type="button" value="Voltar" onClick="history.go(-1)" class="btn btn-danger btn-s">Voltar </button>
+
+
+</form>
+
+
+  <div>
+     <br/><h3>Funcionários</h3>
+      <table >
+              <thead>
+                  <tr>
+                  <th>Nome</th>
+                  <th>Email</th>
+                  <th>Fone</th>
+                  <th>CPF</th>
+                  <th>RG</th>
+                  <th>Empresa</th>
+                  <th>Função</th>
+
+
+                    </tr>
+              </thead>
+        <tbody>
+          <!--  ng-hide="showAddEditformulario" ng-hide="!showTable" ng-click="show()" -->
+          <tr ng-repeat="fileupload in fileuploads" >
+
+            <td>{{ fileupload.funcionario }}</td>
+            <td>{{ fileupload.email }}</td>
+            <td>{{ fileupload.fone }}</td>
+            <td>{{fileupload.cpf }}</td>
+            <td>{{ fileupload.rg }}</td>
+            <td>{{ fileupload.empresa }}</td>
+            <td>{{ fileupload.funcao }}</td>
+
+            <td ><button ng-click="editFile(fileupload)">Editar</button></td>
+            <td ><button ng-click="deleteFile(fileupload)">Deletar</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+ </div>
